@@ -8,15 +8,23 @@ import (
 )
 
 func main() {
-	r := gin.Default()
+	router := gin.Default()
 
 	templates.HandleTemplate()
 
-	r.GET("/files", handler.GetFile)
+	router.GET("/files/download/", handler.GetFile)
 
-	r.POST("/files", handler.UploadFile)
+	router.GET("/files/names", handler.GetFilenames)
 
-	if err := r.Run(":8080"); err != nil {
+	router.POST("/files/upload", handler.UploadFile)
+
+	router.POST("/files/delete/all", handler.DeleteAllFiles)
+
+	router.POST("/files/delete/", handler.DeleteFile)
+
+	router.GET("/files/download/all", handler.GetAllFiles)
+
+	if err := router.Run(":8080"); err != nil {
 		log.Fatal(err)
 	}
 }

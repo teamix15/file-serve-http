@@ -1,17 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>File Serve HTTP</title>
-    <link rel="stylesheet" href="../view/style.css">
+
 </head>
 <body>
 
-
-<form id="upload-form" method="POST" action="http://localhost:8080/files" enctype="multipart/form-data">
-    <input type="file" name="file" id="file-input">
-    <button type="submit">Upload file</button>
+<h1>Upload file in server</h1>
+<form action="http://localhost:8080/files/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
 </form>
 
+<h1>Get list of filenames</h1>
+<form action="http://localhost:8080/files/names" method="get">
+    <input type="submit" value="Get list of filenames">
+</form>
 
+<h1>Delete file</h1>
+<form action="http://localhost:8080/files/delete/" method="post">
+    <label for="filenameForDelete">Input filename:</label>
+    <input type="text" id="filenameForDelete" name="filename">
+    <button type="submit">Delete</button>
+</form>
 
+<h1>Delete all file from server</h1>
+<form action="http://localhost:8080/files/delete/all" method="post">
+    <input type="submit" value="Delete">
+</form>
+
+<h1>Download file from server</h1>
+<form action="http://localhost:8080/files/download/" method="get">
+    <label for="filenameForDownload">Input filename:</label>
+    <input type="text" id="filenameForDownload" name="filename">
+    <button type="submit">Download</button>
+</form>
+
+<h1>Download all files from server</h1>
+<form action="http://localhost:8080/files/download/all" method="get">
+    <button type="submit">Download</button>
+</form>
+
+</body>
+</html>
